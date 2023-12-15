@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concatenation Program</title>
+</head>
+<body>
+
+<script>
+    // Function to concatenate elements of an array
+    function concat(stringsArray) {
+        var result = "";
+
+        for (var i = 0; i < stringsArray.length; i++) {
+            result += stringsArray[i];
+        }
+
+        return result;
+    }
+
+    // Hardcoded array of strings
+    var namesArray = ["Johnny", "DeeDee", "Joey", "Marky"];
+
+    // Call the concat function and display the result in the HTML document
+    document.write("<p>Concatenated string: " + concat(namesArray) + "</p>");
+</script>
+
+</body>
+</html>

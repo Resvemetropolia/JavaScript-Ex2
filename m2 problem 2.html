@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants List</title>
+</head>
+<body>
+
+<script>
+    var numParticipants = prompt("Enter the number of participants:");
+    numParticipants = parseInt(numParticipants);
+    if (isNaN(numParticipants) || numParticipants <= 0) {
+        document.write("<p>Invalid input. Please enter a valid number of participants.</p>");
+    } else {
+        var participantNames = [];
+        for (var i = 0; i < numParticipants; i++) {
+            var participantName = prompt("Enter the name of participant " + (i + 1) + ":");
+            participantNames.push(participantName);
+        }
+        participantNames.sort();
+        document.write("<ol>");
+        for (var i = 0; i < participantNames.length; i++) {
+            document.write("<li>" + participantNames[i] + "</li>");
+        }
+        document.write("</ol>");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Program</title>
+</head>
+<body>
+
+<script>
+    // Function to find the winner and print results
+    function announceResults(candidateArray) {
+        // Sort candidates based on votes in descending order
+        candidateArray.sort((a, b) => b.votes - a.votes);
+
+        // Print the winner and results to the console
+        console.log("The winner is " + candidateArray[0].name + " with " + candidateArray[0].votes + " votes.");
+        console.log("Results:");
+
+        for (var i = 0; i < candidateArray.length; i++) {
+            console.log(candidateArray[i].name + ": " + candidateArray[i].votes + " votes");
+        }
+    }
+
+    // Prompt the user for the number of candidates
+    var numCandidates = prompt("Enter the number of candidates:");
+
+    // Convert the input to a number
+    numCandidates = parseInt(numCandidates);
+
+    // Validate the input
+    if (isNaN(numCandidates) || numCandidates <= 0) {
+        console.error("Invalid input. Please enter a valid number of candidates.");
+    } else {
+        // Initialize an array to store candidate information
+        var candidates = [];
+
+        // Prompt the user for candidate names
+        for (var i = 0; i < numCandidates; i++) {
+            var candidateName = prompt("Enter the name for candidate " + (i + 1) + ":");
+            candidates.push({ name: candidateName, votes: 0 });
+        }
+
+        // Prompt the user for the number of voters
+        var numVoters = prompt("Enter the number of voters:");
+
+        // Convert the input to a number
+        numVoters = parseInt(numVoters);
+
+        // Validate the input
+        if (isNaN(numVoters) || numVoters <= 0) {
+            console.error("Invalid input. Please enter a valid number of voters.");
+        } else {
+            // Prompt each voter for their vote
+            for (var i = 0; i < numVoters; i++) {
+                var vote = prompt("Voter " + (i + 1) + ", enter the name of the candidate you will vote for:");
+
+                // Find the candidate with the given name and increment their votes
+                var votedCandidate = candidates.find(candidate => candidate.name === vote);
+
+                if (votedCandidate) {
+                    votedCandidate.votes++;
+                } else if (vote.trim() !== "") {
+                    console.log("Invalid vote. Candidate not found: " + vote);
+                }
+            }
+
+            // Announce the results
+            announceResults(candidates);
+        }
+    }
+</script>
+
+</body>
+</html>
